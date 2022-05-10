@@ -1,0 +1,21 @@
+
+PARTIE "01 - Informations sur le jeu".
+  Le titre du jeu est "Un réveil difficile".
+  L’auteur du jeu est "Aymeric Besset".
+  La version du jeu est "0.01".
+  Le titre de la licence est "Creative Commons Attribution 4.0 International License".
+  Le lien de la licence est "https://creativecommons.org/licenses/by/4.0/".
+
+PARTIE "02 - Mémoire du jeu".
+  L’historique est une liste.
+  Désactiver la description des objets supportés.
+  --Désactiver l'affichage des directions des sorties.
+  
+PARTIE "03 - Description du monde".
+  -- ///////////////////////
+  -- JOUEUR
+  -- ///////////////////////
+  CHAPITRE "03-01 - Le joueur".
+    Le joueur est dans salle_1.
+      Sa description est "Vous êtes en sous vêtement standard pour séjour en hypersommeil. Aucun autre matériel n'est présent sur vous.".
+    Interpréter moi et personnage comme Le joueur.

@@ -1,0 +1,7 @@
+  -- ///////////////////////
+  --   LIEU 5 − couloir
+  -- ///////////////////////
+  CHAPITRE "COULOIR".
+    salle_5 est un lieu au sud de salle_4.
+    -- TODO
+

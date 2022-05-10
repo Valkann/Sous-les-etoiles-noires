@@ -1,0 +1,59 @@
+ -- ///////////////////////
+  --   LIEU 2 − Le Couloir
+  -- ///////////////////////
+  CHAPITRE "02 - Couloir".
+    salle_2 est un lieu au nord-est de salle_1.
+      Son titre est "un couloir sombre".
+      Sa description est "[1ère fois] {/Alors que vos sens reviennent et que vous prenez conscience de votre environnement des cris éloignés vous parviennent. Une voix métallique éraillée annonce en boucle dans des hauts parleurs./}
+      {+ {6 Attention, dégâts structurels critique, Attention, dégâts structurels critique.6}+}{n}
+      [fin choix]Vous êtes dans un large couloir, les murs sont des vitres qui donnent sur l'espace, vous voyez le vide et les étoiles à l'extérieur. Des corps en uniforme et des débris semblent voler avec calme dans le vide. Vous remarquez aussi des morceaux d'une station spatial qui dérivent et subissent parfois des explosions venant de l'intérieur. Des corps en sous-vêtements sont éparpillés dans le couloir.
+      En face se trouve une porte qui ressemble à celle que vous venez d'ouvrir. 
+      Sur votre gauche une porte renforcée fermée, mais avec un lecteur de carte magnétique. 
+      Sur votre droite une sorte d'accueil donc la bulle de verre à été brisée et qui donne sur une pièce sombre.".
+      Son aperçu est "Un large couloir silencieux".
+    Interpréter couloir, couloir sombre, large couloir comme salle_2.
+    --   LES SORTIES
+    SCÈNE "02-01 - les sorties".
+      --- PORTE VERS SAS    
+      salle_2_porte_n est une porte au nord de salle_2.
+      elle est fermé.
+      son intitulé est "[initialement]Une porte renforcée[puis]La porte renforcée[fin choix]".
+      avant ouvrir la porte renforcée avec une clé ou déverrouiller la porte rouge avec une clé:
+        si cela est la clé du sas:
+          dire "La porte s'ouvre.";
+          changer la porte renforcée est déverrouillée;
+          changer la porte renforcée est ouverte;
+        sinon
+          dire "Ce n'est pas la bonne clé.";
+        fin si
+        stopper l'action.
+      --- PORTE VERS DETENTION 2
+      salle_2_porte_e est une porte à l'est de salle_2.
+      elle est ouverte.
+      son intitulé est "Une grande double porte".
+      interpréter porte ressemblante, porte identique comme salle_2_porte_e.
+      --- PORTE VERS DETENTION 1
+      salle_2_porte_o est une porte à l'ouest de salle_2.
+      elle est ouverte.
+      son intitulé est "[Initialement]Vous venez de là.[puis]La porte de la salle de votre réveil[fin choix]".
+      interpréter porte de départ comme salle_2_porte_e.
+      --- PORTE VERS POINT CONTROLE
+      salle_2_porte_s est une porte au sud de salle_2.
+      elle est ouverte.
+      son intitulé est "Porte vers la pièce sombre".
+      interpréter bulle de verre comme salle_2_porte_e.
+
+    --   LES OBJETS
+    SCÈNE "02-02 - les objets".
+      --la porte en face est une porte à l'est de salle_2.
+
+      les vitres sont un support décoratif de salle_2.
+
+      avant ouvrir la porte renforcée:
+      dire "-------- FIN DE LA BETA -------- .";
+      dire "Qui êtes vous et que faites vous sur ce vaisseau? Vous le saurez en continuant l'aventure quand elle sera prête !";
+      terminer le jeu;
+      stopper l’action.
+
+
+  

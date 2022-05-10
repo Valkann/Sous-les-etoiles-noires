@@ -1,0 +1,8 @@
+  -- ///////////////////////
+  --   LIEU 8 − CONDUIT DE VENTILATION
+  -- ///////////////////////
+  CHAPITRE "CONDUIT".
+    salle_8 est un lieu dans la salle_4.
+    salle_8 est un lieu dans la salle_7.
+    -- TODO
+

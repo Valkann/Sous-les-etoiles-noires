@@ -1,0 +1,243 @@
+
+  -- ///////////////////////
+  --   LIEU 1 − salle_1
+  -- ///////////////////////
+  PARTIE "04 - Le Jeu"
+  
+  avant commencer le jeu:
+    attendre touche;
+      dire "{/ hummmmm... /}";
+    attendre touche;
+      dire "{/Vous reprenez conscience tant bien que mal.
+      La porte de votre caisson d'hypersommeil s'ouvre, votre vision est encore floue.
+      Vous ne savez pas du tout ce que vous faites ici./}";
+    attendre touche.
+  -- ///////////////////////
+  --   LE REVEIL
+  -- ///////////////////////
+PARTIE "05 - Réveil".
+  -- ///////////////////////
+  --   LIEU 1 − Salle De Réveil
+  -- ///////////////////////
+  CHAPITRE "01 - la salle du réveil".
+    salle_1 est un lieu.
+      Son titre est "
+        [si L’historique contient "log-30-435"]Salle de détention numéro 1
+        [sinon]Salle inconnue
+        [fin si]".  
+      Sa description est "[si L’historique contient "passé:medecin"]C'est une {-grande salle-} de stockage de personne en attente de soin. 
+      Les grandes portes doivent permettre de les transporter vers une salle d'opération ou un bloc chirurgical.
+      [sinon]C'est une {-grande salle-} aux {-murs-} métalliques baigné de flash de {-lumière-}.
+      [finsi] Vous voyez d'autres {-caissons d'hypersommeil-}, un {-écran de contrôle-} et deux portes, une grande et une petite.".
+        elle est éclairé.
+      Interpréter Salle de détention, salle 1, grande salle et salle de réveil, salle comme salle_1.
+    -- ///////////////////////
+    --   LES SORTIES
+    -- ///////////////////////
+    SCÈNE "01-02 - les sorties".
+      -- ///////////////////////
+      -- PORTE NORD-EST
+      avant fermer porte_1_salle_1:
+        dire "{/La porte est bloquée, il faudrait la réparée pour qu'elle se ferme./}".  
+      porte_1_salle_1 est une porte au nord-est de salle_1.
+        elle est fermée et verrouillée.
+        son intitulé est "La grande porte".
+        sa description est "[1ere fois]La porte a visiblement été forcée électroniquement et son mécanisme ne fonctionne plus. 
+        Une vitre laisse entrevoir un {-couloir sombre-}.
+        [puis]La porte forcée vers le {-couloir sombre-}.[fin choix]".
+        Interpréter  grande porte,  porte forcée, porte cassée, porte ouverte comme porte_1_salle_1.  
+      après aller vers porte_2_salle_1:
+        dire "{n}[description porte_2_salle_1]".
+      -- ///////////////////////
+      -- PORTE SUD-EST
+
+      porte_2_salle_1 est une porte  à l'est de salle_1.
+        elle est fermée et verrouillée.
+        son intitulé est "La petite porte".
+        sa description est "La porte est renforcée et complètement bloquée.".  
+        Interpréter porte fermée, porte verrouillée, porte petite et petite porte comme porte_2_salle_1.
+
+    -- ///////////////////////
+    --   LES DECORS
+    -- ///////////////////////
+    SCÈNE "01-03 - les décors".
+      
+      -- ///////////////////////
+      -- MUR
+      salle_1_mur est un support décoratif dans salle_1. 
+        son intitulé est "Les murs de la pièce".
+        sa description est "Ce sont des parois standard de vaisseau spatial.".
+        Interpréter murs, parois comme salle_1_mur.
+      
+      -- ///////////////////////
+      -- PLAFOND
+      salle_1_plafond est un support décoratif dans salle_1. 
+        son intitulé est "Le plafond".
+        sa description est "Le {-plafond-} est bas et plusieurs {-lumières-} clignotent.".
+      
+      -- ///////////////////////
+      -- LUMIERES
+      Les lumières sont un objet décoratif sur salle_1_plafond. 
+        sa description est "Les {-lumières-} semblent fonctionner en mode économique et connaissent des avaries.".
+        il est allumé.
+        Interpréter lampe, lampes, ampoule, ampoules, LED, lumières artificielles,lumieres, lumière, lumiere comme Les lumières.
+
+      vitre_1_porte_1_salle_1 est un objet décoratif sur porte_1_salle_1.
+      Interpréter vitre comme vitre_1_porte_1_salle_1.
+      
+    -- ///////////////////////
+    --   LES OBJETS
+    -- ///////////////////////
+    SCÈNE "01-04 - les objets".
+
+      -- ///////////////////////
+      -- CAISSONS
+      -- ///////////////////////
+      les caissons sont un objet décoratif dans salle_1. 
+        sa description est "D'autres {-caissons d'hypersommeil-} semblent cassés, leurs occupants {-morts-}, et d'autres encore semblent déjà ouvert et vide. 
+        Un {-corps-} semble différent. 
+        Votre {-caisson-} porte le numéro 13.".
+        --son aperçu est "Du {-texte-} clignote sur l'{-écran-}".
+        Interpréter caisson, caisson d'hypersommeil, caissons d'hypersommeil, tube, tubes comme Les caissons.
+        après examiner les caissons:
+          changer le mort n'est plus invisible.
+
+      -- ///////////////////////
+      -- Ecran de contrôle
+      -- ///////////////////////
+      écran est un objet fixé sur salle_1_mur.
+        sa description est "[1ère fois]Un {-écran de contrôle-} au {-mur-} semble cassé et bloqué sur une entrée du {-journal de bord-}.[puis]-[fin choix]".
+        son aperçu est "Du {-texte-} clignote sur un {-écran de contrôle-} sur le {-mur-}".
+        Interpréter écran de contrôle, écran de controle, ecran de controle, ordinateur central et ordinateur comme écran.
+          avant examiner écran:
+            si le joueur possède le communicateur:
+              dire "[intialement]Le bracelet dévérouille les accès.";
+            sinon:  
+              dire "{/Il faut des codes d'accès/}";
+              stopper l'action;
+            fin si.   
+          après examiner écran:
+            dire "un menu est devant vous avec plusieurs options:";
+            choisir
+              choix "Lire le journal de bord":
+                exécuter la commande "lire log-30-435";
+                exécuter la commande "examiner écran";
+              choix "Information sur un prisonnier":
+                dire "Quel prisonnier ?";
+                choisir
+                  choix "1":
+                    dire "Rogal Fist : Meurtres, vols, agressions.{n}";
+                    exécuter la commande "examiner écran";
+                  choix "5":
+                    dire "L-N : Survivante d'un crash dans le quadrant Delta-7.{n}";
+                    exécuter la commande "examiner écran";
+                  choix "18":
+                    dire "Yammer Mask : occultiste sur la Station Spatiale Lear - XN25.{n}";
+                    exécuter la commande "examiner écran";
+                  choix "25":
+                    dire "Doryen Kat, Extorsion et crimes en bande organisée.{n}";
+                    exécuter la commande "examiner écran";
+                  choix "13":
+                    si L’historique contient "passé découvert":
+                      dire "Vous savez qui vous êtes et que vous n'avez rien à faire ici!{n}";
+                      exécuter la commande "examiner écran";
+                    sinon:
+                      dire "Vous êtes...";
+                      changer L'historique contient "passé découvert";
+                      choisir
+                        choix "Agent Corpo de la Yard-Voynicht.":
+                          changer L'historique contient "passé:agent";
+                        choix "Ancien marine colonial.":
+                          changer L'historique contient "passé:marine";
+                        choix "Space hobo en recherche d'un nouveau voyage.":
+                          changer L'historique contient "passé:hobo";
+                        choix "Docker en transit.":
+                          changer L'historique contient "passé:docker";
+                        choix "Gamin et passager clandestin.":
+                          changer L'historique contient "passé:gamin";
+                        choix "Medecin de bord du Cronos.":
+                          changer L'historique contient "passé:medecin";
+                      fin choisir
+                      exécuter la commande "examiner écran";
+                    fin si
+                fin choisir
+              choix "Ouvrir les portes":  
+                si le joueur possède le communicateur:
+                  dire "Un grincement se faire entendre, la grande porte s'entrouve et se bloque, la petite reste bloquée.{n}";
+                  changer la grande porte est ouvert et déverrouillée;
+                sinon:
+                  dire "{/Il faut des codes d'accès/}{n}";
+                finsi
+                exécuter la commande "examiner écran"; 
+              choix "Deconnexion": 
+                exécuter la commande "regarder"; 
+            fin choisir.
+            
+          après frapper écran:
+            dire "Il est déjà cassé.".
+      -- ///////////////////////
+      -- Corps
+      -- ///////////////////////
+      le mort est un support invisible dans salle_1.
+        sa description est "[Initialement]Un {-corps-} est différent, il est par terre et ne semble pas être un occupant des {-caissons-}.
+        [puis] Le corps qui n'est pas celui d'un prisonnier.[fin choix]
+        [si l'historique contient "passé:medecin"] Il semble mort roué de coups.[finsi]".
+        son aperçu est "[initialement]Un {-corps-} semble différent".
+        il est fixé.
+      Interpréter corps, morts, cadavre comme le mort.
+
+          avant prendre le mort:
+            dire "{\Hors de question !\}";
+            stopper l'action.
+      
+      -- ///////////////////////
+      -- Communicateur
+      -- ///////////////////////
+      le communicateur est un objet caché sur le mort.
+        il est portable.
+        sa description est "Un {-bracelet de communication-}, il contient des {-codes d'accès-} et permet de stocker les informations de l'{-ordinateur central-}".
+        son aperçu est "[initialement]Un {-bracelet-} clignote a son poignet.[puis]Un communicateur bracelet.[fin choix]".
+      interpréter bracelet, montre, bracelet de communication comme le communicateur.
+          après mettre le communicateur:
+            dire "{/Cela peut me servir à accéder à l'ordinateur./}";
+            continuer l'action.
+      
+      -- ///////////////////////
+      -- Entrée de journal
+      -- ///////////////////////
+      le log-30-435 est un objet caché sur écran.
+        sa description est "C'est une entrée de journal de bord".
+        Son texte est "défini dans l'action".
+        il est fixé.
+        Interpréter entrée, journal, log, texte, journal de bord et Entrée de journal #1 comme log-30-435.
+          --- LIRE
+          après lire log-30-435:
+            si le joueur possède le communicateur:
+              changer L’historique contient "log-30-435";
+              dire "[1ère fois]{6{+ Date stellaire 30-435++ +}.{n}Station pénitentiaire Daedalus Omega. Salle de détention Numéro: 1. Nombre détenus: 27. {n}{+ Erreur +}. De nombreuses avaries ont été détectées à bord. Enquête en cours. 6}{n}
+              [puis]{/Il semble que vous étiez prisonnier ici et que quelque chose ait mal tourné./}{n}[fin choix]";
+            sinon:
+              dire "{/le texte est crypté./}";
+            finsi.  
+
+      -- ///////////////////////
+      -- Uniforme
+      -- ///////////////////////
+      l'uniforme est un objet caché sur le mort.
+        il est portable;
+        sa description est "[1ère fois]Un uniforme militaire noir, il semble que quelqu'un l'ait déjà fouillé.[si L’historique contient "passé:marine"] il est étrange qu'aucun grade ou signe distinctif ne soit présent. Cela vous rappel les opérations spéciales.[finsi][puis]Un uniforme militaire noir[fin choix]".
+        son aperçu est "[initialement]Il porte un {-uniforme noir-}[puis]Un uniforme noir[fin choix].".
+        interpréter uniforme noir comme l'uniforme.
+        après mettre l'uniforme:
+          dire "{/cela protègera un peu du froid./}";
+          changer l'historique contient "en uniforme";
+          continuer l'action.
+
+      -- ///////////////////////
+      -- Codes d'accès
+      -- ///////////////////////
+      les codes d'accès sont un objet sur le communicateur.
+        ils sont fixés.
+        sa description est "une série de code changeant qui permettent de se connecter à l'ordinateur central".
+        Interpréter code, codes comme codes d'accès.
+

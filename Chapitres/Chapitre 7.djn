@@ -1,0 +1,13 @@
+  -- ///////////////////////
+  --   LIEU 7 − Armurerie
+  -- ///////////////////////
+  CHAPITRE "ARMURERIE".
+    salle_7 est un lieu à l'ouest de salle_5.
+    --💬 Alors que vous rampez dans les conduits vous arrivez dans une grande salle carrée ou s'aligne des dizaines d'armoire de sécurité. Dedans vous trouvez facilement des armes et des protection en kevlar, les mêmes que portent les gardiens. Au milieu de la pièce se trouve le cadavre d'un homme démembré. Le sang à giclé sur toute la pièce, des certain placard sont défoncés.
+    --👁️ **Indices**
+    --- On peut trouver des équipements radio, qui permettent de rester en contact, des détecteur de mouvement, des lampes torches, des combinaisons étanches et des flash bang.
+    --💬 Un bruit retentit dans le fond de la pièce comme si des objets avaient été renversés.
+    --- Spoiler
+    --    Un gare paniqué se trouve au fond de la pièce, sa raison à complètement disparus. Il bave et tire sur tout ce qui bouge.
+
+

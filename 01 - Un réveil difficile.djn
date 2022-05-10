@@ -1,0 +1,564 @@
+PARTIE "01 - Informations sur le jeu".
+  Le titre du jeu est "Un réveil difficile".
+  L’auteur du jeu est "Aymeric Besset".
+  La version du jeu est "0.01".
+  Le titre de la licence est "Creative Commons Attribution 4.0 International License".
+  Le lien de la licence est "https://creativecommons.org/licenses/by/4.0/".
+
+PARTIE "02 - Mémoire du jeu".
+  L’historique est une liste.
+  Désactiver la description des objets supportés.
+  --Désactiver l'affichage des directions des sorties.
+  
+PARTIE "03 - Description du monde".
+  -- ///////////////////////
+  -- JOUEUR
+  -- ///////////////////////
+  CHAPITRE "03-01 - Le joueur".
+    Le joueur est dans salle_1.
+      Sa description est "Vous êtes en sous vêtement standard pour séjour en hypersommeil. Aucun autre matériel n'est présent sur vous.".
+    Interpréter moi et personnage comme Le joueur.
+
+  -- ///////////////////////
+  --   LIEU 1 − salle_1
+  -- ///////////////////////
+PARTIE "04 - Le Jeu"
+  
+  avant commencer le jeu:
+    attendre touche;
+      dire "{/ hummmmm... /}";
+    attendre touche;
+      dire "{/Vous reprenez conscience tant bien que mal.
+      La porte de votre caisson d'hypersommeil s'ouvre, votre vision est encore floue.
+      Vous ne savez pas du tout ce que vous faites ici./}";
+    attendre touche.
+  -- ///////////////////////
+  --   LE REVEIL
+  -- ///////////////////////
+PARTIE "05 - Réveil".
+  -- ///////////////////////
+  --   LIEU 1 − SALLE DE Réveil
+  -- ///////////////////////
+  CHAPITRE "01 - la salle du réveil".
+    salle_1 est un lieu.
+      Son titre est "
+        [si L’historique contient "log-30-435"]Salle de détention numéro 1
+        [sinon]Salle inconnue
+        [fin si]".  
+      Sa description est "[si L’historique contient "passé:medecin"]C'est une {-grande salle-} de stockage de personne en attente de soin. 
+      Les grandes portes doivent permettre de les transporter vers une salle d'opération ou un bloc chirurgical.
+      [sinon]C'est une {-grande salle-} aux {-murs-} métalliques baigné de flash de {-lumière-}.
+      [finsi] Vous voyez d'autres {-caissons d'hypersommeil-}, un {-écran de contrôle-} et deux portes, une grande et une petite.".
+        elle est éclairé.
+      Interpréter Salle de détention, salle 1, grande salle et salle de réveil, salle comme salle_1.
+    -- ///////////////////////
+    --   LES SORTIES
+    -- ///////////////////////
+    SCÈNE "01-02 - les sorties".
+      -- ///////////////////////
+      -- PORTE NORD-EST
+      avant fermer porte_1_salle_1:
+        dire "{/La porte est bloquée, il faudrait la réparée pour qu'elle se ferme./}".  
+      porte_1_salle_1 est une porte au nord-est de salle_1.
+        elle est fermée et verrouillée.
+        son intitulé est "La grande porte".
+        sa description est "[1ere fois]La porte a visiblement été forcée électroniquement et son mécanisme ne fonctionne plus. 
+        Une vitre laisse entrevoir un {-couloir sombre-}.
+        [puis]La porte forcée vers le {-couloir sombre-}.[fin choix]".
+        Interpréter  grande porte,  porte forcée, porte cassée, porte ouverte comme porte_1_salle_1.  
+      après aller vers porte_2_salle_1:
+        dire "{n}[description porte_2_salle_1]".
+      -- ///////////////////////
+      -- PORTE SUD-EST
+
+      porte_2_salle_1 est une porte  à l'est de salle_1.
+        elle est fermée et verrouillée.
+        son intitulé est "La petite porte".
+        sa description est "La porte est renforcée et complètement bloquée.".  
+        Interpréter porte fermée, porte verrouillée, porte petite et petite porte comme porte_2_salle_1.
+
+    -- ///////////////////////
+    --   LES DECORS
+    -- ///////////////////////
+    SCÈNE "01-03 - les décors".
+      
+      -- ///////////////////////
+      -- MUR
+      salle_1_mur est un support décoratif dans salle_1. 
+        son intitulé est "Les murs de la pièce".
+        sa description est "Ce sont des parois standard de vaisseau spatial.".
+        Interpréter murs, parois comme salle_1_mur.
+      
+      -- ///////////////////////
+      -- PLAFOND
+      salle_1_plafond est un support décoratif dans salle_1. 
+        son intitulé est "Le plafond".
+        sa description est "Le {-plafond-} est bas et plusieurs {-lumières-} clignotent.".
+      
+      -- ///////////////////////
+      -- LUMIERES
+      Les lumières sont un objet décoratif sur salle_1_plafond. 
+        sa description est "Les {-lumières-} semblent fonctionner en mode économique et connaissent des avaries.".
+        il est allumé.
+        Interpréter lampe, lampes, ampoule, ampoules, LED, lumières artificielles,lumieres, lumière, lumiere comme Les lumières.
+
+      vitre_1_porte_1_salle_1 est un objet décoratif sur porte_1_salle_1.
+      Interpréter vitre comme vitre_1_porte_1_salle_1.
+      
+    -- ///////////////////////
+    --   LES OBJETS
+    -- ///////////////////////
+    SCÈNE "01-04 - les objets".
+
+      -- ///////////////////////
+      -- CAISSONS
+      -- ///////////////////////
+      les caissons sont un objet décoratif dans salle_1. 
+        sa description est "D'autres {-caissons d'hypersommeil-} semblent cassés, leurs occupants {-morts-}, et d'autres encore semblent déjà ouvert et vide. 
+        Un {-corps-} semble différent. 
+        Votre {-caisson-} porte le numéro 13.".
+        --son aperçu est "Du {-texte-} clignote sur l'{-écran-}".
+        Interpréter caisson, caisson d'hypersommeil, caissons d'hypersommeil, tube, tubes comme Les caissons.
+        après examiner les caissons:
+          changer le mort n'est plus invisible.
+
+      -- ///////////////////////
+      -- Ecran de contrôle
+      -- ///////////////////////
+      écran est un objet fixé sur salle_1_mur.
+        sa description est "[1ère fois]Un {-écran de contrôle-} au {-mur-} semble cassé et bloqué sur une entrée du {-journal de bord-}.[puis]-[fin choix]".
+        son aperçu est "Du {-texte-} clignote sur un {-écran de contrôle-} sur le {-mur-}".
+        Interpréter écran de contrôle, écran de controle, ecran de controle, ordinateur central et ordinateur comme écran.
+          avant examiner écran:
+            si le joueur possède le communicateur:
+              dire "[intialement]Le bracelet dévérouille les accès.";
+            sinon:  
+              dire "{/Il faut des codes d'accès/}";
+              stopper l'action;
+            fin si.   
+          après examiner écran:
+            dire "un menu est devant vous avec plusieurs options:";
+            choisir
+              choix "Lire le journal de bord":
+                exécuter la commande "lire log-30-435";
+                exécuter la commande "examiner écran";
+              choix "Information sur un prisonnier":
+                dire "Quel prisonnier ?";
+                choisir
+                  choix "1":
+                    dire "Rogal Fist : Meurtres, vols, agressions.{n}";
+                    exécuter la commande "examiner écran";
+                  choix "5":
+                    dire "L-N : Survivante d'un crash dans le quadrant Delta-7.{n}";
+                    exécuter la commande "examiner écran";
+                  choix "18":
+                    dire "Yammer Mask : occultiste sur la Station Spatiale Lear - XN25.{n}";
+                    exécuter la commande "examiner écran";
+                  choix "25":
+                    dire "Doryen Kat, Extorsion et crimes en bande organisée.{n}";
+                    exécuter la commande "examiner écran";
+                  choix "13":
+                    si L’historique contient "passé découvert":
+                      dire "Vous savez qui vous êtes et que vous n'avez rien à faire ici!{n}";
+                      exécuter la commande "examiner écran";
+                    sinon:
+                      dire "Vous êtes...";
+                      changer L'historique contient "passé découvert";
+                      choisir
+                        choix "Agent Corpo de la Yard-Voynicht.":
+                          changer L'historique contient "passé:agent";
+                        choix "Ancien marine colonial.":
+                          changer L'historique contient "passé:marine";
+                        choix "Space hobo en recherche d'un nouveau voyage.":
+                          changer L'historique contient "passé:hobo";
+                        choix "Docker en transit.":
+                          changer L'historique contient "passé:docker";
+                        choix "Gamin et passager clandestin.":
+                          changer L'historique contient "passé:gamin";
+                        choix "Medecin de bord du Cronos.":
+                          changer L'historique contient "passé:medecin";
+                      fin choisir
+                      exécuter la commande "examiner écran";
+                    fin si
+                fin choisir
+              choix "Ouvrir les portes":  
+                si le joueur possède le communicateur:
+                  dire "Un grincement se faire entendre, la grande porte s'entrouve et se bloque, la petite reste bloquée.{n}";
+                  changer la grande porte est ouvert et déverrouillée;
+                sinon:
+                  dire "{/Il faut des codes d'accès/}{n}";
+                finsi
+                exécuter la commande "examiner écran"; 
+              choix "Deconnexion": 
+                exécuter la commande "regarder"; 
+            fin choisir.
+            
+          après frapper écran:
+            dire "Il est déjà cassé.".
+      -- ///////////////////////
+      -- Corps
+      -- ///////////////////////
+      le mort est un support invisible dans salle_1.
+        sa description est "[Initialement]Un {-corps-} est différent, il est par terre et ne semble pas être un occupant des {-caissons-}.
+        [puis] Le corps qui n'est pas celui d'un prisonnier.[fin choix]
+        [si l'historique contient "passé:medecin"] Il semble mort roué de coups.[finsi]".
+        son aperçu est "[initialement]Un {-corps-} semble différent".
+        il est fixé.
+      Interpréter corps, morts, cadavre comme le mort.
+
+          avant prendre le mort:
+            dire "{\Hors de question !\}";
+            stopper l'action.
+      
+      -- ///////////////////////
+      -- Communicateur
+      -- ///////////////////////
+      le communicateur est un objet caché sur le mort.
+        il est portable.
+        sa description est "Un {-bracelet de communication-}, il contient des {-codes d'accès-} et permet de stocker les informations de l'{-ordinateur central-}".
+        son aperçu est "[initialement]Un {-bracelet-} clignote a son poignet.[puis]Un communicateur bracelet.[fin choix]".
+      interpréter bracelet, montre, bracelet de communication comme le communicateur.
+          après mettre le communicateur:
+            dire "{/Cela peut me servir à accéder à l'ordinateur./}";
+            continuer l'action.
+      
+      -- ///////////////////////
+      -- Entrée de journal
+      -- ///////////////////////
+      le log-30-435 est un objet caché sur écran.
+        sa description est "C'est une entrée de journal de bord".
+        Son texte est "défini dans l'action".
+        il est fixé.
+        Interpréter entrée, journal, log, texte, journal de bord et Entrée de journal #1 comme log-30-435.
+          --- LIRE
+          après lire log-30-435:
+            si le joueur possède le communicateur:
+              changer L’historique contient "log-30-435";
+              dire "[1ère fois]{6{+ Date stellaire 30-435++ +}.{n}Station pénitentiaire Daedalus Omega. Salle de détention Numéro: 1. Nombre détenus: 27. {n}{+ Erreur +}. De nombreuses avaries ont été détectées à bord. Enquête en cours. 6}{n}
+              [puis]{/Il semble que vous étiez prisonnier ici et que quelque chose ait mal tourné./}{n}[fin choix]";
+            sinon:
+              dire "{/le texte est crypté./}";
+            finsi.  
+
+      -- ///////////////////////
+      -- Uniforme
+      -- ///////////////////////
+      l'uniforme est un objet caché sur le mort.
+        il est portable;
+        sa description est "[1ère fois]Un uniforme militaire noir, il semble que quelqu'un l'ait déjà fouillé.[si L’historique contient "passé:marine"] il est étrange qu'aucun grade ou signe distinctif ne soit présent. Cela vous rappel les opérations spéciales.[finsi][puis]Un uniforme militaire noir[fin choix]".
+        son aperçu est "[initialement]Il porte un {-uniforme noir-}[puis]Un uniforme noir[fin choix].".
+        interpréter uniforme noir comme l'uniforme.
+        après mettre l'uniforme:
+          dire "{/cela protègera un peu du froid./}";
+          changer l'historique contient "en uniforme";
+          continuer l'action.
+
+      -- ///////////////////////
+      -- Codes d'accès
+      -- ///////////////////////
+      les codes d'accès sont un objet sur le communicateur.
+        ils sont fixés.
+        sa description est "une série de code changeant qui permettent de se connecter à l'ordinateur central".
+        Interpréter code, codes comme codes d'accès.
+
+  -- ///////////////////////
+  --   LIEU 2 − LE COULOIR
+  -- ///////////////////////
+  CHAPITRE "02 - Couloir".
+    salle_2 est un lieu au nord-est de salle_1.
+      Son titre est "un couloir sombre".
+      Sa description est "[1ère fois] {/Alors que vos sens reviennent et que vous prenez conscience de votre environnement des cris éloignés vous parviennent. Une voix métallique éraillée annonce en boucle dans des hauts parleurs./}
+      {+ {6 Attention, dégâts structurels critique, Attention, dégâts structurels critique.6}+}{n}
+      [fin choix]Vous êtes dans un large couloir, les murs sont des vitres qui donnent sur l'espace, vous voyez le vide et les étoiles à l'extérieur. Des corps en uniforme et des débris semblent voler avec calme dans le vide. Vous remarquez aussi des morceaux d'une station spatial qui dérivent et subissent parfois des explosions venant de l'intérieur. Des corps en sous-vêtements sont éparpillés dans le couloir.
+      En face se trouve une porte qui ressemble à celle que vous venez d'ouvrir. 
+      Sur votre gauche une porte renforcée fermée, mais avec un lecteur de carte magnétique. 
+      Sur votre droite une sorte d'accueil donc la bulle de verre à été brisée et qui donne sur une pièce sombre.".
+      Son aperçu est "Un large couloir silencieux".
+    Interpréter couloir, couloir sombre, large couloir comme salle_2.
+    --   LES SORTIES
+    SCÈNE "02-01 - les sorties".
+      --- PORTE VERS SAS    
+      salle_2_porte_n est une porte au nord de salle_2.
+      elle est fermé.
+      son intitulé est "[initialement]Une porte renforcée[puis]La porte renforcée[fin choix]".
+      avant ouvrir la porte renforcée avec une clé ou déverrouiller la porte rouge avec une clé:
+        si cela est la clé du sas:
+          dire "La porte s'ouvre.";
+          changer la porte renforcée est déverrouillée;
+          changer la porte renforcée est ouverte;
+        sinon
+          dire "Ce n'est pas la bonne clé.";
+        fin si
+        stopper l'action.
+      --- PORTE VERS DETENTION 2
+      salle_2_porte_e est une porte à l'est de salle_2.
+      elle est ouverte.
+      son intitulé est "Une grande double porte".
+      interpréter porte ressemblante, porte identique comme salle_2_porte_e.
+      --- PORTE VERS DETENTION 1
+      salle_2_porte_o est une porte à l'ouest de salle_2.
+      elle est ouverte.
+      son intitulé est "[Initialement]Vous venez de là.[puis]La porte de la salle de votre réveil[fin choix]".
+      interpréter porte de départ comme salle_2_porte_e.
+      --- PORTE VERS POINT CONTROLE
+      salle_2_porte_s est une porte au sud de salle_2.
+      elle est ouverte.
+      son intitulé est "Porte vers la pièce sombre".
+      interpréter bulle de verre comme salle_2_porte_e.
+
+    --   LES OBJETS
+    SCÈNE "02-02 - les objets".
+      --la porte en face est une porte à l'est de salle_2.
+
+      les vitres sont un support décoratif de salle_2.
+
+      avant ouvrir la porte renforcée:
+      dire "-------- FIN DE LA BETA -------- .";
+      dire "Qui êtes vous et que faites vous sur ce vaisseau? Vous le saurez en continuant l'aventure quand elle sera prête !";
+      terminer le jeu;
+      stopper l’action.
+
+
+  -- ///////////////////////
+  --   LIEU 3 − SALLE DE DETENTION NUMERO 2
+  -- ///////////////////////
+  CHAPITRE "SALLE DE DETENTION NUMERO 2".
+    -- TODO
+        -- OK -- 💬 Cette pièce ressemble à celle dans laquelle vous vous êtes réveillé, un cadavre de garde gît par terre. Une plaie béante sur la poitrine. Vous trouvez sur lui une clef magnétique, un pistolet et pouvez prendre son uniforme tâché de sang.
+        -- OK -- 👁️ **Indices**
+        -- OK -- On peut voir que le garde a été tué de plusieurs coup de lame en pleine poitrine.=> Medecin
+        -- OK -- Les écrans semblent avoir été accéder puis ensuite détruits avec rage => Agent
+        -- OK -- 💬 Des caissons d'hypersommeil vide ou brisés sont dans la pièce, un écran de contrôle est complètement arraché du mur. 
+        -- A gauche de l'écran une autre porte renforcée (3)
+        -- A droite la porte dont vous venez (4)
+    scène "01 - La salle"
+      salle_3 est un lieu à l'est de salle_2. 
+        Son titre est "[si l'historique contient "log-30-435"]Salle de détention numéro 2[sinon]Salle inconnue[fin si]".
+        Sa description est "Cette pièce ressemble à celle dans laquelle vous vous êtes réveillé, un {-cadavre-} gît par terre[si l'historique contient "passé:marine"], sans doute un autre garde[finsi]. Une plaie béante sur la poitrine[si l'historique contient "passé:medecin"], elle semble être l'oeuvre d'une lame dentelée[finsi]. Vous trouvez sur lui une {-clef magnétique-}, un {-pistolet-} et son {-uniforme tâché de sang-}."
+        Son aperçu est "Une autre pièce pleine de caissons".
+
+
+    scène "02 - Les sorties"
+        porte_1_salle_13 est une porte au nord-ouest de la salle_3.
+          Sa description est "La porte dont vous venez".
+          Interpréter grande porte, porte d'arrivée comme porte_1_salle_13.
+        porte_2_salle_3 est une porte à l'ouest de la salle_3.
+          Sa description est "Une porte renforcée".
+          interpréter porte renforcée comme porte_2_salle_3.
+    scène "03 - Les objets"
+        corps1_salle_3 est un support de la salle_3.
+          Il est fixé.
+          Sa description est "Un cadavre par terre[si l'historique contient "passé:marine"], sans doute un autre garde[finsi]. Une plaie béante sur la poitrine[si l'historique contient "passé:medecin"], elle semble être l'oeuvre d'une lame dentelée[finsi]".
+          interpréter cadavre comme corps1_salle_3.
+        clef magnétique est un objet sur le corps1_salle_3.
+          interpréter clef, carte, carte magnétique comme clef magnétique.
+        pistolet est un objet sur corps1_salle_3.
+          interpréter arme, flingue, arme à feu comme pistolet.
+        uniforme_salle3 est un objet sur corps1_salle_3.
+          Sa description est "Un uniforme tâché de sang".
+        ecran_salle_3 est un objet décoratif dans la salle_3.
+          Sa description est "Les écrans de contrôle ont été fracassés avec rage.[si l'historique contient "passé:agent"]Il semble que l'on ait utilisé les écran poiur chercher des informations avant de les cassés.[finsi]".
+        
+  -- ///////////////////////
+  --   LIEU 4 − POINT DE CONTROLE
+  -- ///////////////////////
+  CHAPITRE "POINT DE CONTROLE".
+    salle_4 est un lieu 
+    -- TODO
+      -- OK -- 💬 La pièce dans laquelle vous pénétré est sombre, uniquement éclairé par les écrans et les afficheurs en partie brisés qui sont sur les murs. Les lampes du plafond sont brisée, et la grille d'aération pendouille dans un grincement métallique.
+      -- OK -- Trois corps sont présents, tous des sortent de gardes, armés et en tenue militaire. Le sol est couvert de sang et vous pouvez sentir dans l'air l'odeur du fer, de l'ozone et des intestins des morts qui se sont relâchés.
+      -- 👁️ **Indices**
+      -- - La méthode pour tuer les gardes semble la même que précédemment. => medecin
+      -- - L'odeur de l'ozone est sans doute due à une arme énergétique. => Marine
+      -- - Les écrans semblent être des écrans de vidéos surveillance, vous pouvez voir du mouvement furtif derrière la pièce du couloir (7). => Agent
+      -- - Spoiler
+      --   L'aération permet de se rendre dans la pièce (6)
+      --     ⇒ Dispositif anti vermine - électrification => Le gamin s'en tire facilement
+      -- 💬 En plus de l'accès au couloir 4, le point de contrôle semble avoir des accès directe aux salle 1 et 2 mais sont bloqués.
+      -- Une dernière porte dont le mécanisme semble avoir subit des dommages possède un lecteur de carte et donne vers les salles 5 et 6
+      -- 💬 Une fois la porte passée vous êtes dans un couloir, la pièce de gauche n'a plus de porte, la porte de droite par contre à été complètement bloquée par une des débris d'explosions.
+    
+    -- au sud de salle_2 et à l'est de salle_1 et à l'ouest de salle_3.
+      Son titre est "[si l'historique contient "log-30-435"]Point de contrôle[sinon]Salle inconnue[fin si]".
+      sa description est "La pièce dans laquelle vous pénétré est sombre, uniquement éclairé par les écrans et les afficheurs en partie brisés qui sont sur les murs. Les lampes du plafond sont brisée, et la grille d'aération pendouille dans un grincement métallique.
+      Trois corps sont présents, tous des sortent de gardes, armés et en tenue militaire. Le sol est couvert de sang et vous pouvez sentir dans l'air l'odeur du fer, de l'ozone et des intestins des morts qui se sont relâchés.".
+        
+      les corps sont des objets dans la salle_4.
+
+  -- ///////////////////////
+  --   LIEU 5 − couloir
+  -- ///////////////////////
+  CHAPITRE "COULOIR".
+    salle_5 est un lieu au sud de salle_4.
+    -- TODO
+
+  -- ///////////////////////
+  --   LIEU 6 − Refectoire
+  -- ///////////////////////
+  CHAPITRE "REFECTOIRE".
+    salle_6 est un lieu à l'est de salle_5.
+    -- TODO
+      -- 💬 La pièce que vous voyez est un réfectoire, de grande table sont renversé et les machines distributrice de protéines sur les murs sont à moitié arrachée. Les murs et plafonds sont noircit comme si une explosion terrible avait eu lieu ici. Au fond de la pièce se trouve un ascenseur.
+      -- Des cadavres de gardes et de prisonniers semblent joncher le sol. 
+      -- 
+      -- 👁️ **Indices**
+      -- 
+      -- - On peut remarquer que l'ascenseur est condamné, il semble ne plus être relié à d'autre endroits de la station. Deux corps sont à l'intérieur, une personnes en blouse blanche et un homme en uniforme. La personne en blouse possède un badge d'accès différent.
+      -- - Il y a eu plusieurs explosion dans le coin, sans doute des grenades.
+      -- - Quelques vivre peuvent être récupérées.
+
+  -- ///////////////////////
+  --   LIEU 7 − Armurerie
+  -- ///////////////////////
+  CHAPITRE "ARMURERIE".
+    salle_7 est un lieu à l'ouest de salle_5.
+    --💬 Alors que vous rampez dans les conduits vous arrivez dans une grande salle carrée ou s'aligne des dizaines d'armoire de sécurité. Dedans vous trouvez facilement des armes et des protection en kevlar, les mêmes que portent les gardiens. Au milieu de la pièce se trouve le cadavre d'un homme démembré. Le sang à giclé sur toute la pièce, des certain placard sont défoncés.
+    --👁️ **Indices**
+    --- On peut trouver des équipements radio, qui permettent de rester en contact, des détecteur de mouvement, des lampes torches, des combinaisons étanches et des flash bang.
+    --💬 Un bruit retentit dans le fond de la pièce comme si des objets avaient été renversés.
+    --- Spoiler
+    --    Un gare paniqué se trouve au fond de la pièce, sa raison à complètement disparus. Il bave et tire sur tout ce qui bouge.
+
+
+  -- ///////////////////////
+  --   LIEU 8 − CONDUIT DE VENTILATION
+  -- ///////////////////////
+  CHAPITRE "CONDUIT".
+    salle_8 est un lieu dans la salle_4.
+    salle_8 est un lieu dans la salle_7.
+    -- TODO
+
+  -- ///////////////////////
+  --   LIEU 9 − SAS DE DECONTAMINATION
+  -- ///////////////////////
+  CHAPITRE "SAS DE DECONTAMINATION".
+    salle_9 est un lieu au nord de la salle_4.
+    -- 💬 La porte s'ouvre grâce à la carte de l'homme en blouse blanche. Derrière se trouve des émetteurs à gaz pour décontaminer les personnes qui s'y trouve. IL faut porter une combinaison étanche pour survivre à la décontamination.
+    -- Un bouton rouge lance la procédure. 
+    -- Vous voyez deux portes avec des hublots, celle de droite mène dans un couloir (10) , tandis que celle en face donne sur une sorte de stockage de matériels. (8)
+    -- A gauche une mousse violette et luminescente recouvre le mur.
+    -- 👁️ **Indices**
+    -- - Les portes ne s'ouvriront qu'après la procédure de décontamination
+    -- - Pirater les portes est possible
+    -- - La procédure va sans doute éradiquer la mousse
+    -- - Spoiler
+    --     Si les personnages touchent la mousse ou lancent la décontamination de l'intérieur. Cette dernière attaque.
+    --     **⇒** **Fungi AME**
+    --     Derrière la mousse se trouve l'accès vers le laboratoire (9). C'est une porte à badge restreint. La carte d'un scientifique permet de l'ouvrir.
+
+    
+  -- ///////////////////////
+  --   LIEU 10 − Salle de stockage
+  -- ///////////////////////
+  CHAPITRE "Salle de stockage".
+    salle_10 est un lieu au nord de la salle_9.
+    --💬 Dans cette salle blanche se trouve de grandes étagère et de grande chambre froide. Dans les étagères du matériel médical est stocké. Dans les chambres froides différents produits avec des étiquettes portant des séries de chiffres et de lettres. La lumière de néon blanc du plafond clignote et plonge la pièce dans des moment d'obscurité. Des bruits humides et des grognements se font entendre au fond de la pièce.
+    --Sur la droite une porte à moitié défoncée donne sur une autre pièce. (10)
+    --👁️ **Indices**
+    --- **E**n tendant l'oreille, les bruits ressemble à des bruits de mastications
+    --- il est possible d'accéder à une ordinateur et d'avoir accès à une partie des logs d'expérience
+    --- Des notes sur l'expérience A-LI sont disponibles
+    --- Des notes sur le Flash sont disponibles
+    --💬 Dans le fond de la pièce entre des armoires renversé et des chambres froides au sol, se trouve un groupe de garde accroupit qui semblent récupérer des choses à terre.
+    --L'un d'eux tourne la tête vers vous, vous vous rendez compte que sa bouche est garnie de dents aiguisé pleine de sang et que ses yeux ont disparus derrière une excroissances de tissu cicatriciel. Il renifle dans votre direction.
+    --Au sol vous  voyez le cadavre de plusieurs personnes en blouse blanche à moitié dévorées.
+    --- Spoiler
+    --    En cas de bruit ou d'attaque les cannibales se jettent sur les PJs
+    --    ⇒ **Cannibales AME**
+
+  -- ///////////////////////
+  --   LIEU 11 − Laboratoire
+  -- ///////////////////////
+  CHAPITRE "Laboratoire".
+    salle_11 est un lieu à l'ouest de la salle_9.
+    -- 💬 Un grand laboratoire blanc, avec toute une série d'appareil de mesure et de test, différents matériels sont sur des paillasse, et différentes pièces sont séparées par des grandes parois de verres. Des béchers, et des fiole ont été renversées. Au fond vous entendez des bruits étouffés.
+    -- 👁️ **Indices**
+    -- - Des traces de pas peuvent être observées dans les liquides au sol, il semble que deux ou trois gardes soient passés dans le coin.
+    -- 💬 Au fond de la pièce trois scientifiques sont encore vivant, ils vous braquent avec des armes à feu. Au sol, les cadavres de plusieurs scientifiques et de deux gardes sont visibles.
+    -- <aside>
+    -- 🔊 "Qui êtes vous, restez où vous êtes ou nous tirons !"
+    -- </aside>
+    -- 💬 Ils sont visiblement sous le choc, et semblent effondrée d'avoir abattu ces deux gardes
+    -- 👁️ **Indices**
+    -- - Les gardes ne semblent pas montrer les signes de changement vu dans la Salle de stockage (10)
+    -- - Des notes éparses parlent de l'expérience A-LI.
+    -- Les scientifiques ont abattus les gardes car ceux ci les tenait responsable des problèmes actuels. Notamment à cause de l'expérience A-LI.
+
+    --🥼 **Docteur Richards**
+    --- Responsable du projet A-LI
+    --- Homme soixantaine, blouse blanche, cheveux blanc, et le plus calme des trois.
+    --- Spoiler
+    --    Le Docteur Richards a été contaminé lors de l'expérience.
+    --    Il n'hésite pas à abandonner les autres, voir à les piéger si il se sent en danger pour tenter de s'enfuir seul.
+    --    **Dé de changement**
+    --    Après avoir découvert Richards, chaque fois que les personnages vont découvrir une nouvelle salle lancez un dé. Sur 1 ou 2 le dé diminue d'un cran. Quand le dé passe de d4 à rien alors Richards commence sa métamorphose. Si il est encore vivant quand vous arrivez aux capsules il commence a changer.
+
+    --🥼 **Docteur Carth**
+    --- Medecin de bord
+    --- Femme quarantaine, connait les expérience mais essaye de faire de son mieux pour les patients. Paniquée et hystérique.
+    
+    --🥼 **Docteur Mael**
+    --- Chercheur en biomédecine
+    --- Homme trentaine, paniqué, en état de choc, travaillait uniquement sur le serum.
+
+  -- ///////////////////////
+  --   LIEU 12 − Baie médicale
+  -- ///////////////////////
+  CHAPITRE "Baie médicale".
+    salle_12 est un lieu à l'est de la salle_9.
+    --salle_12 est un lieu à l'est de la salle_10.
+    -- 💬 Grande salle blanche, séparée en différents blocs opératoires, des respirateurs et des pompes à seringues sont autours des lits chirurgicaux. Une salle particulière semble centraliser les moniteurs et les rapports des machines médicales des différents blocs opératoires.
+    -- Tout est renversé, brisé et répandu sur les sols et les murs. Des cadavres de personnes en combinaisons étanches sont éparpillées, pour la plupart démembrés, dans les pièces.
+    -- Une sorte de tunnel d'évacuation d'ordure se trouve au nord de la pièce. À droite de celui-ci une pièce bloquée par une porte renforcée (13) à droite de la pièce vous voyez une porte métallique en partie arrachée qui mène vers une pièce sombre, l'électricité semble y être en partie coupée.
+    -- 
+    -- 👁️ **Indices**
+    -- 
+    -- - De grandes marques de lames sont visibles sur les corps et les murs.
+    -- - Des Caméras et des équipements de la pièce de contrôle font penser que les résultats et les interventions étaient filmées puis stockées ailleurs. (Dans l'info baie 12)
+
+
+  -- ///////////////////////
+  --   LIEU 13 − Centre d'opérations
+  -- ///////////////////////
+  CHAPITRE "Centre d'opérations".
+    salle_13 est un lieu au nord-est de la salle_12.
+    -- 💬 Une grande salle de contrôle, différents niveaux avec des ordinateurs et des bureaux positionner en arc de cercle sont tournés vers la grande paroi transparente qui permet de voir l'espace. On peut voir le reste de la station sombrer dans l'espace et les canons de votre module faire feu sur tous les débris s'approchant de trop près.
+    -- 👁️ **Indices**
+    -- - Vous voyez une capsule partir et par le hublot des gens à l'intérieur, les canons se tournent vers la capsule et font feu, la désintégrant dans l'espace.
+    -- - Les canons semblent être en mode automatique car un protocole de quarantaine a été mise en route
+
+  -- ///////////////////////
+  --   LIEU 14 − Baie informatique
+  -- ///////////////////////
+  CHAPITRE "Baie informatique".
+    salle_14 est un lieu à l'est de la salle_12.
+    -- 💬 La salle semble particulièrement touchée, les serveurs et les écrans ont été découpé ou projeter par terre avec force. Tout est sens dessus dessous. Si l'électricité n'est pas réactivée la salle est plongée dans le noir et la plupart des écrans et serveurs ne fonctionnent plus. Seuls quelques un éclairent faiblement les alentours avec la lueur des LED indiquant des traitements en cours.
+    -- Au milieu des décombres plusieurs cadavres de gardes gisent sous les baies de brassages, et les armoires de serveurs, les membres tranchés et une marre de sang poisseuse et collantes au sol.
+    -- Des débris de serveurs bloquent l'accès à une dalle au sud (12), au nord se trouve une porte vers une autre pièce (13)
+    -- 
+    -- 👁️ **Indices**
+    -- Deux enregistrements sont disponibles
+    -- 
+    -- - Un enregistrement sur votre personnage : On voit qu'il a subit une injection de A-LI et la vidéo coupe au moment ou il semble que des choses commencent à ramper sous sa peau.
+    -- - Un enregistrement datant de moins de 24h : On y voit un prisonnier subir une injection A-LI. Le docteur Richards est présent. 
+    -- Le prisonnier semble muter à grande vitesse, ses bras se transforment en grandes lames, une queue barbelée pousse alors que ses membres inférieurs s'atrophient, le front s'avance sur des yeux qui se recouvrent de tissu cicatriciel. Si le son est allumé vous pouvez entendre les cris de douleurs, le bruits des os qui se brisent et de désagréables bruit de liquides qui semblent s'écouler. Les scientifiques semblent ravis, jusqu'au moment ou la queue de la créature en décapite un malgré la combinaison. du sang recouvre la caméra et vous n'entendez plus que des cris de doleurs, des coups de feu et comme des bruits de chair déchirée.
+    -- 
+    -- 💬 Des mouvements commencent à remué les membres des gardes morts au sol et des grognements commencent à se faire entendre.
+
+  -- ///////////////////////
+  --   LIEU 15 − Centrale électrique
+  -- ///////////////////////
+  CHAPITRE "Centrale électrique".
+    salle_15 est un lieu au sud de la salle_14.
+    -- 💬 D'énormes générateurs sont visibles dans le noir au fond de la pièce. les panneaux de contrôles des machinerie ont été abimés et en partie arrachés. des câbles sont répandus par terre sur les cadavres de techniciens baignant dans leur sang. Certains câbles semblent étrangement fusionnés avec les corps. Différents branchements ont été arrachés et la machinerie même à l'arrêt ne semble pas avoir été trop détériorée
+    -- 👁️ **Indices**
+    -- - Il est possible d'essayer de réparer pour remettre le courant
+
+  -- ///////////////////////
+  --   LIEU 16 − Capsules de secours
+  -- ///////////////////////
+  CHAPITRE "Capsules de secours".
+    salle_16 est un lieu à l'est de la salle_13.
+    -- 💬 La pièce que vous voyez est dans le noir, mais vous repérer les formes rondes et familière de capsule de secours, elles permettent de prendre un nombre de passagers égal au nombre de personnages. Plusieurs capsules sont déjà parties et vous pouvez remarquer que le niveau d'autonomie électrique de celles qui restent est extrêmement bas.
+    -- 👁️ **Indices**
+    -- - Il est possible de recharger une capsule en utilisant les réserves de toutes les autres.

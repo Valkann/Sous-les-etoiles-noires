@@ -1,0 +1,26 @@
+-- ///////////////////////
+--   LIEU 4 − Point De Controle
+-- ///////////////////////
+CHAPITRE "POINT DE CONTROLE".
+salle_4 est un lieu 
+-- TODO
+  -- OK -- 💬 La pièce dans laquelle vous pénétré est sombre, uniquement éclairé par les écrans et les afficheurs en partie brisés qui sont sur les murs. Les lampes du plafond sont brisée, et la grille d'aération pendouille dans un grincement métallique.
+  -- OK -- Trois corps sont présents, tous des sortent de gardes, armés et en tenue militaire. Le sol est couvert de sang et vous pouvez sentir dans l'air l'odeur du fer, de l'ozone et des intestins des morts qui se sont relâchés.
+  -- 👁️ **Indices**
+  -- - La méthode pour tuer les gardes semble la même que précédemment. => medecin
+  -- - L'odeur de l'ozone est sans doute due à une arme énergétique. => Marine
+  -- - Les écrans semblent être des écrans de vidéos surveillance, vous pouvez voir du mouvement furtif derrière la pièce du couloir (7). => Agent
+  -- - Spoiler
+  --   L'aération permet de se rendre dans la pièce (6)
+  --     ⇒ Dispositif anti vermine - électrification => Le gamin s'en tire facilement
+  -- 💬 En plus de l'accès au couloir 4, le point de contrôle semble avoir des accès directe aux salle 1 et 2 mais sont bloqués.
+  -- Une dernière porte dont le mécanisme semble avoir subit des dommages possède un lecteur de carte et donne vers les salles 5 et 6
+  -- 💬 Une fois la porte passée vous êtes dans un couloir, la pièce de gauche n'a plus de porte, la porte de droite par contre à été complètement bloquée par une des débris d'explosions.
+
+-- au sud de salle_2 et à l'est de salle_1 et à l'ouest de salle_3.
+  Son titre est "[si l'historique contient "log-30-435"]Point de contrôle[sinon]Salle inconnue[fin si]".
+  sa description est "La pièce dans laquelle vous pénétré est sombre, uniquement éclairé par les écrans et les afficheurs en partie brisés qui sont sur les murs. Les lampes du plafond sont brisée, et la grille d'aération pendouille dans un grincement métallique.
+  Trois corps sont présents, tous des sortent de gardes, armés et en tenue militaire. Le sol est couvert de sang et vous pouvez sentir dans l'air l'odeur du fer, de l'ozone et des intestins des morts qui se sont relâchés.".
+    
+  les corps sont des objets dans la salle_4.
+

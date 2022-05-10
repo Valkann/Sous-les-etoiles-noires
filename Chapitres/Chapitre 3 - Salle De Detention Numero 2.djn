@@ -1,0 +1,41 @@
+  -- ///////////////////////
+  --   LIEU 3 − Salle De Detention Numero 2
+  -- ///////////////////////
+  CHAPITRE "SALLE DE DETENTION NUMERO 2".
+    -- TODO
+        -- OK -- 💬 Cette pièce ressemble à celle dans laquelle vous vous êtes réveillé, un cadavre de garde gît par terre. Une plaie béante sur la poitrine. Vous trouvez sur lui une clef magnétique, un pistolet et pouvez prendre son uniforme tâché de sang.
+        -- OK -- 👁️ **Indices**
+        -- OK -- On peut voir que le garde a été tué de plusieurs coup de lame en pleine poitrine.=> Medecin
+        -- OK -- Les écrans semblent avoir été accéder puis ensuite détruits avec rage => Agent
+        -- OK -- 💬 Des caissons d'hypersommeil vide ou brisés sont dans la pièce, un écran de contrôle est complètement arraché du mur. 
+        -- A gauche de l'écran une autre porte renforcée (3)
+        -- A droite la porte dont vous venez (4)
+    scène "01 - La salle"
+      salle_3 est un lieu à l'est de salle_2. 
+        Son titre est "[si l'historique contient "log-30-435"]Salle de détention numéro 2[sinon]Salle inconnue[fin si]".
+        Sa description est "Cette pièce ressemble à celle dans laquelle vous vous êtes réveillé, un {-cadavre-} gît par terre[si l'historique contient "passé:marine"], sans doute un autre garde[finsi]. Une plaie béante sur la poitrine[si l'historique contient "passé:medecin"], elle semble être l'oeuvre d'une lame dentelée[finsi]. Vous trouvez sur lui une {-clef magnétique-}, un {-pistolet-} et son {-uniforme tâché de sang-}."
+        Son aperçu est "Une autre pièce pleine de caissons".
+
+
+    scène "02 - Les sorties"
+        porte_1_salle_13 est une porte au nord-ouest de la salle_3.
+          Sa description est "La porte dont vous venez".
+          Interpréter grande porte, porte d'arrivée comme porte_1_salle_13.
+        porte_2_salle_3 est une porte à l'ouest de la salle_3.
+          Sa description est "Une porte renforcée".
+          interpréter porte renforcée comme porte_2_salle_3.
+    scène "03 - Les objets"
+        corps1_salle_3 est un support de la salle_3.
+          Il est fixé.
+          Sa description est "Un cadavre par terre[si l'historique contient "passé:marine"], sans doute un autre garde[finsi]. Une plaie béante sur la poitrine[si l'historique contient "passé:medecin"], elle semble être l'oeuvre d'une lame dentelée[finsi]".
+          interpréter cadavre comme corps1_salle_3.
+        clef magnétique est un objet sur le corps1_salle_3.
+          interpréter clef, carte, carte magnétique comme clef magnétique.
+        pistolet est un objet sur corps1_salle_3.
+          interpréter arme, flingue, arme à feu comme pistolet.
+        uniforme_salle3 est un objet sur corps1_salle_3.
+          Sa description est "Un uniforme tâché de sang".
+        ecran_salle_3 est un objet décoratif dans la salle_3.
+          Sa description est "Les écrans de contrôle ont été fracassés avec rage.[si l'historique contient "passé:agent"]Il semble que l'on ait utilisé les écran poiur chercher des informations avant de les cassés.[finsi]".
+        
+  

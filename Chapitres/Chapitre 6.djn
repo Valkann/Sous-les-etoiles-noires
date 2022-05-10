@@ -1,0 +1,15 @@
+  -- ///////////////////////
+  --   LIEU 6 − Refectoire
+  -- ///////////////////////
+  CHAPITRE "REFECTOIRE".
+    salle_6 est un lieu à l'est de salle_5.
+    -- TODO
+      -- 💬 La pièce que vous voyez est un réfectoire, de grande table sont renversé et les machines distributrice de protéines sur les murs sont à moitié arrachée. Les murs et plafonds sont noircit comme si une explosion terrible avait eu lieu ici. Au fond de la pièce se trouve un ascenseur.
+      -- Des cadavres de gardes et de prisonniers semblent joncher le sol. 
+      -- 
+      -- 👁️ **Indices**
+      -- 
+      -- - On peut remarquer que l'ascenseur est condamné, il semble ne plus être relié à d'autre endroits de la station. Deux corps sont à l'intérieur, une personnes en blouse blanche et un homme en uniforme. La personne en blouse possède un badge d'accès différent.
+      -- - Il y a eu plusieurs explosion dans le coin, sans doute des grenades.
+      -- - Quelques vivre peuvent être récupérées.
+
